@@ -1,0 +1,14 @@
+{
+  "name": "daniele/php-country-codes-generator",
+  "type": "project",
+  "require": {
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "license": "PRIVATE",
+  "authors": [
+    {
+      "name": "Daniele De Nobili",
+      "email": "daniele@metaline.it"
+    }
+  ]
+}
