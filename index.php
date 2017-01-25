@@ -80,12 +80,24 @@ foreach ($table->getElementsByTagName('tr') as $row) {
         $countryName = $countryNamesMap[$countryName];
     }
 
+    // Phone codes
+    $phoneCodes = [];
+
+    /** @var \DOMElement $childNode */
+    foreach ($cells->item(12)->childNodes as $childNode) {
+        $phoneCode = trim($childNode->textContent);
+
+        if ($phoneCode) {
+            $phoneCodes[] = '+' . $phoneCode;
+        }
+    }
+
     $countriesByCode[$countryCode] = [
         'name'              => $countryName,
         'code'              => $countryCode,
         'code3'             => $cells->item(2)->textContent,
         'num'               => $cells->item(3)->textContent,
-        'phone_code'        => '+' . $cells->item(12)->textContent,
+        'phone_code'        => implode(', ', $phoneCodes),
         'currency_name'     => '',
         'currency_code'     => '',
         'currency_number'   => '',
